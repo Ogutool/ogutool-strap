@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OguTool Strap</title>
+<meta name="description" content="OguTool Strap is a free Roblox bootstrapper for Windows with one-click fast flag presets.">
+<meta property="og:title" content="OguTool Strap">
+<meta property="og:description" content="A free Roblox bootstrapper with one-click fast flag presets.">
+<meta property="og:image" content="https://ogutool.github.io/ogutool-strap/logo.png">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --text: #16151d; --muted: #5c5a6b;
+    --border: #e4e2ee; --accent: #6d3fe6; --accent2: #2563eb; --accent-text: #fff;
+    --code: #f0eef8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e0d14; --surface: #17161f; --text: #f1f0f6; --muted: #a09db3;
+      --border: #2a2836; --accent: #8b5cf6; --accent2: #3b82f6; --code: #201e2b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e0d14; --surface: #17161f; --text: #f1f0f6; --muted: #a09db3;
+    --border: #2a2836; --accent: #8b5cf6; --accent2: #3b82f6; --code: #201e2b;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 Inter, system-ui, sans-serif; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text); text-decoration: none; }
+  .brand img { width: 32px; height: 32px; }
+  nav .links { display: flex; gap: 20px; }
+  nav .links a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  nav .links a:hover { color: var(--text); }
+  .hero { text-align: center; padding: 64px 0 56px; }
+  .hero img { width: 120px; height: 120px; filter: drop-shadow(0 12px 30px rgba(109,63,230,.35)); }
+  h1 { font-size: clamp(36px, 7vw, 60px); line-height: 1.05; margin: 20px 0 12px; font-weight: 800; letter-spacing: -0.02em; }
+  .grad { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { color: var(--muted); font-size: 19px; max-width: 560px; margin: 0 auto 28px; }
+  .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 1px solid var(--border); color: var(--text); background: var(--surface); }
+  .btn.primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: var(--accent-text); border: 0; }
+  .btn:hover { transform: translateY(-1px); }
+  .small { color: var(--muted); font-size: 13px; margin-top: 14px; }
+  section { padding: 48px 0; }
+  h2 { font-size: 28px; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: var(--code); color: var(--accent); margin-bottom: 10px; }
+  ol.steps { padding-left: 20px; margin: 0; }
+  ol.steps li { margin-bottom: 10px; }
+  code { background: var(--code); padding: 2px 6px; border-radius: 6px; font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 15px; }
+  th { color: var(--muted); font-weight: 500; }
+  tr:last-child td { border-bottom: 0; }
+  .tablewrap { overflow-x: auto; }
+  footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+  footer p { margin: 4px 0; }
+  @media (max-width: 560px) { nav .links { gap: 14px; } nav .links a.hide-sm { display: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#"><img src="logo.png" alt="">OguTool Strap</a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#install" class="hide-sm">Install</a>
+      <a href="#licenses" class="hide-sm">Licenses</a>
+      <a href="https://github.com/Ogutool/ogutool-strap">GitHub</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <img src="logo.png" alt="OguTool Strap logo">
+    <h1>Roblox, <span class="grad">tuned in one click.</span></h1>
+    <p class="lead">OguTool Strap is a free Roblox bootstrapper for Windows with ready-made fast flag presets for better FPS or better graphics.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://github.com/Ogutool/ogutool-strap/releases/latest">⬇ Download for Windows</a>
+      <a class="btn" href="https://github.com/Ogutool/ogutool-strap">View source</a>
+    </div>
+    <p class="small">Windows 10 or newer · Needs the <a href="https://dotnet.microsoft.com/download/dotnet/6.0">.NET 6 Desktop Runtime</a> · Free and open source (MIT)</p>
+  </header>
+
+  <section id="features">
+    <h2>One-click presets</h2>
+    <p class="sub">Open the Fast Flags page, pick one, press Save. Done.</p>
+    <div class="grid">
+      <div class="card"><span class="tag">Performance</span><h3>Best FPS</h3><p>Uncapped FPS, no shadows, grass, wind or post effects, lighter textures.</p></div>
+      <div class="card"><span class="tag">Quality</span><h3>Best Graphics</h3><p>High textures, 4x anti-aliasing and better lighting, plus the FPS unlock.</p></div>
+      <div class="card"><span class="tag">Low-end</span><h3>Potato PC</h3><p>The lowest settings possible, for weak laptops and old PCs.</p></div>
+      <div class="card"><span class="tag">Light touch</span><h3>Essentials</h3><p>FPS unlock and no ads or telemetry, and your graphics stay as they are.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Everything else you'd expect</h2>
+    <p class="sub">Built on Fishstrap and Bloxstrap, so you keep all their features.</p>
+    <div class="grid">
+      <div class="card"><h3>Fast flag editor</h3><p>Add, import and export your own flags as JSON.</p></div>
+      <div class="card"><h3>Basic settings editor</h3><p>Change frame rate cap, quality level and more.</p></div>
+      <div class="card"><h3>Server info</h3><p>See which server and region you joined, plus game history.</p></div>
+      <div class="card"><h3>Discord Rich Presence</h3><p>Show the game you're playing on your Discord profile.</p></div>
+      <div class="card"><h3>Mods</h3><p>Custom cursors, sounds, fonts and launch screens.</p></div>
+      <div class="card"><h3>Studio support</h3><p>Works with Roblox Studio too, with a cache cleaner and channel switcher.</p></div>
+    </div>
+  </section>
+
+  <section id="install">
+    <h2>Install</h2>
+    <p class="sub">It takes about a minute.</p>
+    <div class="card">
+      <ol class="steps">
+        <li>Download <code>OguToolStrap.exe</code> from the <a href="https://github.com/Ogutool/ogutool-strap/releases/latest">latest release</a>.</li>
+        <li>Run it. If Windows says "Windows protected your PC", click <b>More info → Run anyway</b>. The app isn't code-signed yet.</li>
+        <li>Follow the installer. It installs to <code>%LocalAppData%\OguToolStrap</code>.</li>
+        <li>Open <b>Fast Flags</b>, click a preset, then press <b>Save</b>.</li>
+      </ol>
+    </div>
+    <p class="small">Roblox only applies fast flags on its <a href="https://devforum.roblox.com/t/allowlist-for-local-client-configuration-via-fast-flags/3966569">allowlist</a>. Flags that aren't allowed are simply ignored.</p>
+  </section>
+
+  <section id="licenses">
+    <h2>Credits &amp; licenses</h2>
+    <p class="sub">OguTool Strap is open source and is built on these projects.</p>
+    <div class="tablewrap">
+      <table>
+        <tr><th>Project</th><th>Author</th><th>License</th></tr>
+        <tr><td><a href="https://github.com/Ogutool/ogutool-strap/blob/main/LICENSE">OguTool Strap</a></td><td>Ogutool</td><td>MIT</td></tr>
+        <tr><td><a href="https://github.com/returnrqt/fishstrap">Fishstrap</a></td><td>returnrqt</td><td><a href="https://github.com/Ogutool/ogutool-strap/blob/main/LICENSE.Fishstrap">MIT</a></td></tr>
+        <tr><td><a href="https://github.com/bloxstraplabs/bloxstrap">Bloxstrap</a></td><td>pizzaboxer</td><td><a href="https://github.com/Ogutool/ogutool-strap/blob/main/LICENSE.Bloxstrap">MIT</a></td></tr>
+        <tr><td><a href="https://github.com/lepoco/wpfui">WPF UI</a></td><td>lepo.co</td><td>MIT</td></tr>
+        <tr><td><a href="https://github.com/icsharpcode/AvalonEdit">AvalonEdit</a></td><td>ICSharpCode</td><td>MIT</td></tr>
+        <tr><td><a href="https://github.com/microsoft/fluentui-system-icons">Fluent System Icons</a></td><td>Microsoft</td><td>MIT</td></tr>
+      </table>
+    </div>
+    <p class="small">Full list in <a href="https://github.com/Ogutool/ogutool-strap/blob/main/NOTICE.md">NOTICE.md</a>.</p>
+  </section>
+
+  <footer>
+    <p>© 2026 Ogutool · <a href="https://github.com/Ogutool/ogutool-strap">GitHub</a> · <a href="https://github.com/Ogutool/ogutool-strap/issues/new/choose">Report a bug</a></p>
+    <p>The only official downloads are on this site and the GitHub repository.</p>
+    <p>OguTool Strap is not affiliated with Roblox Corporation, Fishstrap or Bloxstrap.</p>
+  </footer>
+</div>
+</body>
+</html>
